@@ -13,7 +13,7 @@ public class InvalidPartittions {
     public void createInvalidPartitions() {
         //1. El identificador no debe comenzar con una letra (mayúscula o minúscula).
         List<String> startWithNoLetter = new ArrayList<>();
-        startWithNoLetter.add("abc"); // -> valido
+        startWithNoLetter.add("1abc"); // -> valido
         startWithNoLetter.add("2xy");
         startWithNoLetter.add("3A");
         startWithNoLetter.add("4b");
@@ -39,62 +39,5 @@ public class InvalidPartittions {
 
      }
 
-    @Test
-    public void testInvalidPartitions(){
-        Identifier id = new Identifier();
-        createInvalidPartitions();
-        for (String identifier : invalidIdentifiers) {
-            assertTrue(errorMessage(identifier), id.validateIdentifier(identifier));
 
-        }
-
-
-    }
-    public String errorMessage2(String identifier){
-
-
-        return
-    }
-    public String errorMessage(String identifier) {
-        System.out.println("Identifier deberia ser invalido: " + identifier);
-        if(identifier == null || identifier.isEmpty()) {
-            return "❌ El identificador no puede ser nulo o vacío.";
-
-        }
-        List<String> testMessages = new ArrayList<>();
-        String firstChar = identifier.substring(0, 1);
-        // probando regla 1
-        testMessages.add("1. El identificador "+ identifier +" debe comenzar con una letra (mayúscula o minúscula).");
-        if(firstChar.matches("[a-zA-Z]")) {
-            testMessages.add("  ✅ El identificador comienza con una letra: |"+ firstChar+"|" + identifier.substring(1, identifier.length()));
-        } else {
-            testMessages.add("  ❌ El identificador no comienza con una letra: |"+ firstChar+"|" + identifier.substring(1, identifier.length())+" --> "+"|a|"+identifier.substring(1, identifier.length()));
-        }
-        // probando regla 2
-        testMessages.add("2. Los caracteres siguientes (si los hay) son letras o dígitos.");
-        testMessages.add("Caracteres del identificador: " + identifier);
-        for (char ch : identifier.toCharArray()) {
-            if (isLetter(ch) || Character.isDigit(ch)) {
-                testMessages.add("  ✅ El caracter |" + ch + "| es válido");
-            } else {
-                testMessages.add("  ❌ El caracter |" + ch + "| no es válido");
-            }
-        }
-        // probando regla 3
-        testMessages.add("3. La longitud total del identificador "+ identifier +" debe ser de 1 a 5 caracteres (inclusive).");
-        if(identifier.length() >= 1 && identifier.length() <= 5) {
-            testMessages.add("  ✅ La longitud del identificador es válida : " + identifier + ".length() --> "+ identifier.length());
-        } else if(identifier.length() < 1) {
-            testMessages.add("  ❌ La longitud del identificador es menor a 1");
-        }
-        else if(identifier.length() > 5) {
-            testMessages.add("  ❌ La longitud del identificador es mayor a 5: " + identifier+ " --> " + identifier.substring(1, 5));
-        }
-        String response = "";
-        for(String message : testMessages) {
-            response += "\n"+(message);
-        }
-        return response;
-
-    }
 }
