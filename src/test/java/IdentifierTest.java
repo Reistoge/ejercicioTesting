@@ -3,7 +3,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class IdentifierTestClass {
+public class IdentifierTest {
     // Encapsulamos el metodo principal en pequeños
     // pasos usando la clase original para testear el metodo y la clase
     // de esta forma podemos saber en que paso o procedimiento
